@@ -32,3 +32,7 @@ Next test worked fine with the repo self-reference...
 Next I'm gonna move HEAD around independently of the commit involving the new
 file (by writing this note).
 
+ok, that worked out just fine.
+
+Next up, let's try some stuff with the same files to see if it respects that
+`overwrite` option.
