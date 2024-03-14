@@ -36,3 +36,39 @@ ok, that worked out just fine.
 
 Next up, let's try some stuff with the same files to see if it respects that
 `overwrite` option.
+
+---
+
+Same scenario... made an out-of-band change to a managed file.
+
+`plan` seems to want to undo the change:
+
+```
+mmm-4b4a:~/.../github-provider-playground/terraform/configfiles (main) $ terraform plan -var-file configfiles.tfvars 
+data.github_repository.playground: Reading...
+data.github_repository.playground: Read complete after 1s [id=github-provider-playground]
+github_repository_file.managed_config_file: Refreshing state... [id=github-provider-playground/targets/this/is/a_managed_config_file.yml]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # github_repository_file.managed_config_file will be updated in-place
+  ~ resource "github_repository_file" "managed_config_file" {
+      ~ content             = <<-EOT
+            some sort of content goes here
+            with more content here
+            and another line of stuff here
+          - 
+          - this'll be a line that hopefully gets overwritten by terraform
+        EOT
+        id                  = "github-provider-playground/targets/this/is/a_managed_config_file.yml"
+        # (10 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+```
+which is perfect.
+
+
