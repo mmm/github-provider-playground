@@ -13,15 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-resource "github_repository" "playground" {
-  name      = "github-provider-playground"
-  auto_init = false
+data "github_repository" "playground" {
+  full_name      = "mmm/github-provider-playground"
 }
 
-resource "github_repository_file" "foo" {
-  repository          = github_repository.playground.name
+resource "github_repository_file" "managed_config_file" {
+  repository          = data.github_repository.playground.full_name
   branch              = "main"
-  file                = "targets/foo"
+  file                = "targets/this/is/a_managed_config_file.yml"
   content             = <<-EOT
     some sort of content goes here
     with more content here
