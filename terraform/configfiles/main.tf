@@ -34,6 +34,7 @@ resource "github_repository_file" "managed_config_file" {
   content             = <<-EOT
     some sort of content goes here
     with more content here
+    and another line of stuff here
     EOT
   commit_message      = "Managed by Terraform"
   commit_author       = var.git_user_name
