@@ -13,18 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-data "github_repository" "playground" {
-  name      = "github-provider-playground"
-}
-
+#
+# first test... created a new repo
+#
 # resource "github_repository" "playground" {
 #   name      = "github-provider-test0"
 #   description = "My awesome codebase"
-
 #   visibility = "public"
 #   auto_init = true
-
 # }
+
+#
+# subsequent tests just pointed to the current repo as its own data source
+#
+data "github_repository" "playground" {
+  name      = "github-provider-playground"
+}
 
 resource "github_repository_file" "managed_config_file" {
   #repository          = github_repository.playground.name

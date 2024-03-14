@@ -71,4 +71,9 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 which is perfect.
 
+Apply committed things as expected without any drama.
+
+---
+
+You can see the progress of most of these tests in commit history of this repo.
 
