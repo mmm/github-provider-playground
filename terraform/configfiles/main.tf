@@ -14,11 +14,21 @@
 # limitations under the License.
 
 data "github_repository" "playground" {
-  full_name      = "mmm/github-provider-playground"
+  name      = "github-provider-playground"
 }
 
+# resource "github_repository" "playground" {
+#   name      = "github-provider-test0"
+#   description = "My awesome codebase"
+
+#   visibility = "public"
+#   auto_init = true
+
+# }
+
 resource "github_repository_file" "managed_config_file" {
-  repository          = data.github_repository.playground.full_name
+  #repository          = github_repository.playground.name
+  repository          = data.github_repository.playground.name
   branch              = "main"
   file                = "targets/this/is/a_managed_config_file.yml"
   content             = <<-EOT
