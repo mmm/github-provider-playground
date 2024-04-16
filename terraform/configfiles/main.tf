@@ -45,3 +45,17 @@ resource "github_repository_file" "managed_config_file" {
   commit_email        = var.git_user_email
   overwrite_on_create = true
 }
+
+
+# now get the content from a template just like:
+#
+#resource "google_storage_bucket_object" "startup_script" {
+#  #name   = "provision.sh"
+#  name  = "terraform/vertex-ai-workbenches/provision.sh"
+#  #source = "/images/nature/garden-tiger-moth.jpg"
+#  content = templatefile("provision.sh.tmpl", {
+#    home_ip = data.terraform_remote_state.storage.outputs.storage-node-ip-address,
+#    tools_ip = data.terraform_remote_state.storage.outputs.storage-node-ip-address,
+#  })
+#  bucket = var.state_bucket
+#}
